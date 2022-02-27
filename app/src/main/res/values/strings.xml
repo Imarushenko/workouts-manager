@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">workout-manager</string>
+    <string name="workouts_manager_app">Workouts Manager App</string>
+    <string name="email_address">Email Address</string>
+    <string name="register_btn">Register</string>
+    <string name="login_btn">Login</string>
+    <string name="password_txt">Password</string>
+    <string name="login_txt">Login</string>
 </resources>
