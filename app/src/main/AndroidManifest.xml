@@ -11,7 +11,9 @@
         android:theme="@style/Theme.Workoutmanager">
         <activity
             android:name=".AppRegister"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Register"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

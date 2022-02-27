@@ -22,5 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void pointToRegister(View view) {
         Intent point_to_reg_screen = new Intent(this, AppRegister.class);
+        startActivity(point_to_reg_screen);
     }
 }
