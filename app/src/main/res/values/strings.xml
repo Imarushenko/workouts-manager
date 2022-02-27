@@ -6,4 +6,7 @@
     <string name="login_btn">Login</string>
     <string name="password_txt">Password</string>
     <string name="login_txt">Login</string>
+    <string name="register">Register</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
 </resources>
