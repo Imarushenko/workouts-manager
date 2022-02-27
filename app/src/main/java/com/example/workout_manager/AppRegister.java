@@ -3,6 +3,7 @@ package com.example.workout_manager;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +28,7 @@ public class AppRegister extends AppCompatActivity {
 
     // register function
     public void register(View view) {
+        // email & password - take from the activity
         String email = ((EditText) findViewById(R.id.email_field_reg)).getText().toString();
         String password = ((EditText) findViewById(R.id.pass_field_reg)).getText().toString();
 
@@ -41,5 +43,11 @@ public class AppRegister extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    // go back to login screen (Activity) function
+    public void pointToLogin(View view) {
+        Intent point_to_login_screen = new Intent(this, MainActivity.class);
+        startActivity(point_to_login_screen);
     }
 }
