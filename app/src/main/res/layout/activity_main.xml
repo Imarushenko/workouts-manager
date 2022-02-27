@@ -61,7 +61,7 @@
         android:layout_height="55dp"
         android:layout_marginBottom="50dp"
         android:background="#00BCD4"
-        android:onClick="checkValidation"
+        android:onClick="login"
         android:text="@string/login_btn"
         android:textColor="#FCFDFF"
         app:layout_constraintBottom_toTopOf="@+id/reg_btn"
