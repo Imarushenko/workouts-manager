@@ -7,12 +7,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class AppRegister extends AppCompatActivity {
     // firebase
@@ -24,10 +30,21 @@ public class AppRegister extends AppCompatActivity {
         setContentView(R.layout.activity_app_register);
         // firebase
         mAuth = FirebaseAuth.getInstance();
+
+        // call 2 (or more) functions once click on 1 button
+        Button reg_btn = findViewById(R.id.submit_btn_reg);
+        reg_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // functions of Firebase bellow
+                register();
+                addDataToRealTimeDataBase();
+            }
+        });
     }
 
-    // register function
-    public void register(View view) {
+    // register function = Firebase
+    public void register() {
         // email & password - take from the activity
         String email = ((EditText) findViewById(R.id.email_field_reg)).getText().toString();
         String password = ((EditText) findViewById(R.id.pass_field_reg)).getText().toString();
@@ -44,6 +61,50 @@ public class AppRegister extends AppCompatActivity {
                     }
                 });
     }
+
+    // add data to real-time database (& User class)
+    public void addDataToRealTimeDataBase() {
+        // what we gonna save in the database
+        String first_name = ((EditText) findViewById(R.id.full_name_txt_reg)).getText().toString();
+        String id = ((EditText) findViewById(R.id.id_txt_reg)).getText().toString();
+        String email = ((EditText) findViewById(R.id.email_field_reg)).getText().toString();
+        String phone_number = ((EditText) findViewById(R.id.phone_field_reg)).getText().toString();
+
+        // new User object
+        User user = new User(first_name, id, email, phone_number);
+
+        // Write to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance(); // manager - access the database
+        // location where to add the data - if the location isn't exists - it will be created by the "path"
+        DatabaseReference myRef = database.getReference("users").child(id);
+
+        myRef.setValue(user);
+    }
+
+    // TODO: move this function to other activity afterwards
+    // Read from the database
+//    public void readFromRealTimeDatabase(String id) {
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("users").child(id);
+//
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+//                User value = dataSnapshot.getValue(User.class);
+//
+//                // which info we want to get?
+//                value.getFull_name();
+//                value.getEmail();
+//                value.getPhone_number();
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//            }
+//        });
+//    }
 
     // go back to login screen (Activity) function
     public void pointToLogin(View view) {

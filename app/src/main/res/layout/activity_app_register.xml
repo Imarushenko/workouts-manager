@@ -10,39 +10,22 @@
     <TextView
         android:id="@+id/title_reg"
         android:layout_width="0dp"
-        android:layout_height="65dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:gravity="center"
         android:text="@string/register"
         android:textColor="#5611D1"
-        android:textSize="48sp"
+        android:textSize="24sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/first_name_txt_reg"
+        app:layout_constraintBottom_toTopOf="@+id/full_name_txt_reg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/first_name_txt_reg"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="@string/first_name"
-        android:textColor="#6D4C41"
-        app:layout_constraintBottom_toTopOf="@+id/last_name_txt_reg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_reg" />
-
-    <EditText
-        android:id="@+id/last_name_txt_reg"
+        android:id="@+id/id_txt_reg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -51,13 +34,13 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="@string/last_name"
+        android:text="@string/id"
         android:textColor="#6D4C41"
         app:layout_constraintBottom_toTopOf="@+id/email_title_reg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first_name_txt_reg" />
+        app:layout_constraintTop_toBottomOf="@+id/full_name_txt_reg" />
 
     <EditText
         android:id="@+id/email_field_reg"
@@ -87,7 +70,7 @@
         app:layout_constraintBottom_toTopOf="@+id/email_field_reg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/last_name_txt_reg" />
+        app:layout_constraintTop_toBottomOf="@+id/id_txt_reg" />
 
     <EditText
         android:id="@+id/phone_field_reg"
@@ -155,12 +138,11 @@
         android:layout_height="50dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="35dp"
-        android:onClick="register"
+        android:layout_marginBottom="5dp"
         android:text="@string/submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintHorizontal_bias="0.028"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pass_field_reg" />
 
@@ -168,11 +150,28 @@
         android:id="@+id/back_to_main_btn_reg"
         android:layout_width="180dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="5dp"
         android:onClick="pointToLogin"
         android:text="@string/back_to_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/full_name_txt_reg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="@string/full_name"
+        android:textColor="#6D4C41"
+        app:layout_constraintBottom_toTopOf="@+id/id_txt_reg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_reg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
