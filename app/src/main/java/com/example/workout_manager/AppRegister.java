@@ -71,7 +71,7 @@ public class AppRegister extends AppCompatActivity {
         String phone_number = ((EditText) findViewById(R.id.phone_field_reg)).getText().toString();
 
         // new User object
-        User user = new User(first_name, id, email, phone_number);
+        User user = new User(first_name, id, phone_number, email);
 
         // Write to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance(); // manager - access the database
