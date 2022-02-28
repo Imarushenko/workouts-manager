@@ -81,31 +81,6 @@ public class AppRegister extends AppCompatActivity {
         myRef.setValue(user);
     }
 
-    // TODO: move this function to other activity afterwards
-    // Read from the database
-//    public void readFromRealTimeDatabase(String id) {
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("users").child(id);
-//
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-//                User value = dataSnapshot.getValue(User.class);
-//
-//                // which info we want to get?
-//                value.getFull_name();
-//                value.getEmail();
-//                value.getPhone_number();
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//            }
-//        });
-//    }
-
     // go back to login screen (Activity) function
     public void pointToLogin(View view) {
         Intent point_to_login_screen = new Intent(this, MainActivity.class);
