@@ -1,5 +1,6 @@
 package com.example.workout_manager;
 
+// user class
 public class User {
     // properties
     String full_name;
@@ -32,18 +33,5 @@ public class User {
 
     public String getPhone_number() {
         return phone_number;
-    }
-
-    // setters
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
-    }
-
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }
