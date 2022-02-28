@@ -10,11 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Workoutmanager">
         <activity
+            android:name=".CreateWorkout"
+            android:exported="false"
+            android:label="Create Workout"
+            android:parentActivityName=".Workouts"
+            />
+        <activity
             android:name=".Workouts"
             android:exported="false"
             android:label="Workouts"
-            android:parentActivityName=".MainActivity"
-            />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AppRegister"
             android:exported="false"

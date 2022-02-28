@@ -76,7 +76,7 @@ public class AppRegister extends AppCompatActivity {
         // Write to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance(); // manager - access the database
         // location where to add the data - if the location isn't exists - it will be created by the "path"
-        DatabaseReference myRef = database.getReference("users").child(id);
+        DatabaseReference myRef = database.getReference("users").child(user.getId());
 
         myRef.setValue(user);
     }

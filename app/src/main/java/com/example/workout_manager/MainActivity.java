@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+    // popup
     public void checkValidation() {
         Toast popUp = Toast.makeText(this, "Email or Password is wrong", Toast.LENGTH_LONG);
         popUp.show();
