@@ -3,10 +3,10 @@ package com.example.workout_manager;
 // user class
 public class User {
     // properties
-    String full_name;
-    String id;
-    String phone_number;
-    String email;
+    private String full_name;
+    private String id;
+    private String phone_number;
+    private String email;
 
     // constructors
     public User(String full_name, String id, String phone_number, String email) {
@@ -33,5 +33,22 @@ public class User {
 
     public String getPhone_number() {
         return phone_number;
+    }
+
+    // setters
+    public void setFull_name(String full_name) {
+        this.full_name = full_name;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

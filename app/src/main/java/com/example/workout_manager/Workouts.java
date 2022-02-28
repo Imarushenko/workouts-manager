@@ -47,7 +47,7 @@ public class Workouts extends AppCompatActivity {
 
     // TODO: move this function to other activity afterwards
     // Read from the database
-//    public void readFromRealTimeDatabase(String id) {
+//    public void readWorkoutsFromRealTimeDatabase(String id) {
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
 //        DatabaseReference myRef = database.getReference("users").child(id);
 //

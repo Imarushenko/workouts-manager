@@ -4,11 +4,11 @@ import android.telephony.SignalStrength;
 
 public class KindOfWorkouts {
     // properties
-    String id;
-    String title;
-    String typeofWorkout;
-    String workout_details;
-    String sets;
+    private String id;
+    private String title;
+    private String typeofWorkout;
+    private String workout_details;
+    private String sets;
 //    String example;
 
     // constructors
