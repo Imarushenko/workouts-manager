@@ -46,6 +46,7 @@ public class CreateWorkout extends AppCompatActivity {
         String workoutDetails = ((EditText) findViewById(R.id.details_field_create_workout)).getText().toString();
         String sets = ((EditText) findViewById(R.id.sets_field_create_workout)).getText().toString();
 
+
         // new User object
         KindOfWorkouts createWorkout = new KindOfWorkouts(id, title, typeOfWorkout, workoutDetails, sets);
 
@@ -56,33 +57,6 @@ public class CreateWorkout extends AppCompatActivity {
 
         myRef.setValue(createWorkout);
     }
-
-    // TODO: move this function to other activity afterwards
-    // Read from the database
-//    public void readWorkoutsFromRealTimeDatabase(String id) {
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("workouts").child(id);
-//
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-//                KindOfWorkouts workout = dataSnapshot.getValue(KindOfWorkouts.class);
-//
-//                // which info we want to get?
-//                workout.getId();
-//                workout.getTitle();
-//                workout.getTypeofWorkout();
-//                workout.getWorkout_details();
-//                workout.getSets();
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//            }
-//        });
-//    }
 
     // popup
     public void workOutAdded() {
