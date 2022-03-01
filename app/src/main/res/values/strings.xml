@@ -24,5 +24,14 @@
     <string name="number_of_sets">Number Of Sets or Duration</string>
     <string name="add_activity">Add Workout</string>
     <string name="sign_out_w">Sign Out</string>
+    <string name="textview">Enter Weight (in KG)</string>
     <string name="calculate_bmi_bmr">Calculate BMI / BMR</string>
+    <string name="enter_height">Enter Height (in CM)</string>
+    <string name="enter_age">Enter Age</string>
+    <string name="calculate_bmi">Calculate BMI</string>
+    <string name="bmr_enter_height">Enter Height (in CM)</string>
+    <string name="bmr_enter_weight">Enter Weight (in KG)</string>
+    <string name="result_bmi">Result</string>
+    <string name="calculate_bmr_btn">Calculate BMR</string>
+    <string name="result_bmr">Result</string>
 </resources>

@@ -51,8 +51,6 @@ public class CreateWorkout extends AppCompatActivity {
         // new User object
         KindOfWorkouts createWorkout = new KindOfWorkouts(id, title, typeOfWorkout, workoutDetails, sets);
 
-        User user = new User();
-
         // Write to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance(); // manager - access the database
         // location where to add the data - if the location isn't exists - it will be created by the "path"

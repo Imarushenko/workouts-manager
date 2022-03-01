@@ -97,6 +97,11 @@ public class Workouts extends AppCompatActivity {
 
     }
 
+    public void pointToCalculations(View view) {
+        Intent point_to_calculations = new Intent(Workouts.this, Calculates.class);
+        startActivity(point_to_calculations);
+    }
+
     private void signOutUser() {
         Intent mainActivity = new Intent(Workouts.this, MainActivity.class);
         mainActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
