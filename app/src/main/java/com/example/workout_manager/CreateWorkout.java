@@ -30,7 +30,9 @@ public class CreateWorkout extends AppCompatActivity {
         addWorkoutsData_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // add the workout to the database
                 addWorkoutsDataToRealTimeDataBase();
+                // popup
                 workOutAdded();
             }
         });
@@ -46,9 +48,10 @@ public class CreateWorkout extends AppCompatActivity {
         String workoutDetails = ((EditText) findViewById(R.id.details_field_create_workout)).getText().toString();
         String sets = ((EditText) findViewById(R.id.sets_field_create_workout)).getText().toString();
 
-
         // new User object
         KindOfWorkouts createWorkout = new KindOfWorkouts(id, title, typeOfWorkout, workoutDetails, sets);
+
+        User user = new User();
 
         // Write to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance(); // manager - access the database
@@ -60,7 +63,7 @@ public class CreateWorkout extends AppCompatActivity {
 
     // popup
     public void workOutAdded() {
-        Toast popUp = Toast.makeText(this, "Workout Added Successfully!", Toast.LENGTH_LONG);
+        Toast popUp = Toast.makeText(this, "Workout Was Added Successfully!", Toast.LENGTH_LONG);
         popUp.show();
     }
 }
