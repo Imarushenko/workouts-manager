@@ -34,7 +34,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 signIn();
-
+                // show the activity layout (workouts) in the workouts page
+                Intent showAllWorkouts = new Intent(MainActivity.this, Workouts.class);
+                startActivity(showAllWorkouts);
+                finish();
             }
         });
     }
