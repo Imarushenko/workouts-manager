@@ -13,7 +13,7 @@
     <string name="password">Password</string>
     <string name="phone_number">Phone Number</string>
     <string name="button">Create Workout</string>
-    <string name="your_activities">Your Activities</string>
+    <string name="your_activities">Your Workouts</string>
     <string name="string_your_activities">Your Activities</string>
     <string name="enter_id">Enter ID</string>
     <string name="full_name">Full Name</string>
@@ -22,5 +22,5 @@
     <string name="type_shoulders_legs_arms_back_chest_etc">Type: (Shoulders, Legs, Arms, Back, Chest, Aerobic, etc...)</string>
     <string name="workout_details">Workout Details:</string>
     <string name="number_of_sets">Number Of Sets or Duration</string>
-    <string name="add_activity">Add Activity</string>
+    <string name="add_activity">Add Workout</string>
 </resources>
