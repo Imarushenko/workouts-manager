@@ -12,7 +12,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,13 +35,27 @@ public class Workouts extends AppCompatActivity {
     AdapterForRecycleView adapterForRecycleView;
     ArrayList<KindOfWorkouts> list;
 
-
+    // logout
+    Button logout_btn;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workouts);
 
+        // logout settings & button
+        mAuth = FirebaseAuth.getInstance();
+        logout_btn = findViewById(R.id.sign_out_w);
+        logout_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                signOutUser();
+            }
+        });
+
+        // recycle view settings
         // find recycle list by id
         recyclerView = findViewById(R.id.list_of_workouts_w);
         // firebase
@@ -80,10 +97,18 @@ public class Workouts extends AppCompatActivity {
 
     }
 
+    private void signOutUser() {
+        Intent mainActivity = new Intent(Workouts.this, MainActivity.class);
+        mainActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(mainActivity);
+        finish();
+    }
+
     public void pointToCreateWorkout() {
         Intent point_to_createWorkout_screen = new Intent(this, CreateWorkout.class);
         startActivity(point_to_createWorkout_screen);
     }
+
 
 
 }

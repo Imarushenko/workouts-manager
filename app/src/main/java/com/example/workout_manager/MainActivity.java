@@ -34,34 +34,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 signIn();
-                // show the activity layout (workouts) in the workouts page
-                Intent showAllWorkouts = new Intent(MainActivity.this, Workouts.class);
-                startActivity(showAllWorkouts);
-                finish();
             }
         });
     }
-
-    // create a new user function - firebase
-//    public void createUser() {
-//        // get email address & password
-//        String email = ((EditText)findViewById(R.id.field_email)).getText().toString();
-//        String password = ((EditText)findViewById(R.id.field_password)).getText().toString();
-//
-//        mAuth.createUserWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            // check in terminal
-//                            Log.d("result" , "create - OK");
-//                        } else {
-//                            // check in terminal
-//                            Log.d("result" , "create - failed");
-//                        }
-//                    }
-//                });
-//    }
 
     // login auth - firebase
     public void signIn() {
@@ -76,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             pointToLogin();
+
+                            // show the activity layout (workouts) in the workouts page
+                            // go to workouts INTENT
+                            Intent showAllWorkouts = new Intent(MainActivity.this, Workouts.class);
+                            startActivity(showAllWorkouts);
+                            finish();
+
                         } else {
                             // If sign in fails, display a message to the user.
                             checkValidation();
@@ -84,13 +66,12 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    // popup
+    // popup - points to if user's details is wrong
     public void checkValidation() {
         Toast popUp = Toast.makeText(this, "Email or Password is wrong", Toast.LENGTH_LONG);
         popUp.show();
     }
 
-    // screens navigation
     // go to register INTENT
     public void pointToRegister(View view) {
         Intent point_to_reg_screen = new Intent(this, AppRegister.class);
