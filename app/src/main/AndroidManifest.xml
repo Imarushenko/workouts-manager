@@ -10,11 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Workoutmanager">
         <activity
+            android:name=".Calculates"
+            android:exported="false"
+            android:label="Calculate BMI / BMR"
+            android:parentActivityName=".Workouts"
+            />
+        <activity
             android:name=".CreateWorkout"
             android:exported="false"
             android:label="Create Workout"
-            android:parentActivityName=".Workouts"
-            />
+            android:parentActivityName=".Workouts" />
         <activity
             android:name=".Workouts"
             android:exported="false"

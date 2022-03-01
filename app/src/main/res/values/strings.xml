@@ -24,4 +24,5 @@
     <string name="number_of_sets">Number Of Sets or Duration</string>
     <string name="add_activity">Add Workout</string>
     <string name="sign_out_w">Sign Out</string>
+    <string name="calculate_bmi_bmr">Calculate BMI / BMR</string>
 </resources>
