@@ -10,7 +10,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Calculates extends AppCompatActivity {
+    // firebase
+    private FirebaseAuth mAuth;
     // properties
     // BMI
     EditText height;
@@ -27,7 +33,8 @@ public class Calculates extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculates);
-        String res = "";
+        // firebase
+        mAuth = FirebaseAuth.getInstance();
         // get fields by id from the activity
         // BMI
         height = (EditText) findViewById(R.id.weight_field);
@@ -60,23 +67,35 @@ public class Calculates extends AppCompatActivity {
 
     }
 
-//    public void calculateBMR(View v) {
-//
-//    }
-
     // inner class of AsyncTask
     public class CalculateBmiBmr extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute() {
-            super.onPreExecute();
         }
 
+        // a function that runs after we clicked the button
         @Override
         protected void onPostExecute(String s) {
-//            super.onPostExecute(s);
             Toast.makeText(Calculates.this, "BMR calculated successfully!!", Toast.LENGTH_LONG).show();
+
+            // what we gonna save in the database
+            String weight_bmr = ((EditText) findViewById(R.id.weight_bmr_field)).getText().toString();
+            String height_bmr = ((EditText) findViewById(R.id.height_bmr_field)).getText().toString();
+            String age_bmr = ((EditText) findViewById(R.id.age_bmr_field)).getText().toString();
+
+            // new UserDetails object
+            UserDetails_BMI_BMR user_details = new UserDetails_BMI_BMR(weight_bmr, height_bmr, age_bmr);
+
+            // Write to the database
+            FirebaseDatabase database = FirebaseDatabase.getInstance(); // manager - access the database
+            // location where to add the data - if the location isn't exists - it will be created by the "path"
+            DatabaseReference myRef = database.getReference("BMR Details").child(user_details.getAge());
+
+            myRef.setValue(user_details);
+
         }
 
+        // a function that runs in the background - calculate BMR
         @Override
         protected String doInBackground(String... strings) {
             try {

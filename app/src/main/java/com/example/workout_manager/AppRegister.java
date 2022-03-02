@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,6 +40,7 @@ public class AppRegister extends AppCompatActivity {
                 // functions of Firebase bellow
                 register();
                 addDataToRealTimeDataBase();
+                registeredSuccessfully();
             }
         });
     }
@@ -85,5 +87,11 @@ public class AppRegister extends AppCompatActivity {
     public void pointToLogin(View view) {
         Intent point_to_login_screen = new Intent(this, MainActivity.class);
         startActivity(point_to_login_screen);
+    }
+
+    // popup - user registered successfully
+    public void registeredSuccessfully() {
+        Toast popUp = Toast.makeText(this, "Successfully Registered!!!", Toast.LENGTH_LONG);
+        popUp.show();
     }
 }

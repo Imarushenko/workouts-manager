@@ -7,6 +7,9 @@ public class User {
     private String id;
     private String phone_number;
     private String email;
+//    private String weight;
+//    private String height;
+//    private String age;
 
     // constructors
     public User(String full_name, String id, String phone_number, String email) {
@@ -15,6 +18,12 @@ public class User {
         this.phone_number = phone_number;
         this.email = email;
     }
+
+//    public User(String weight, String height, String age) {
+//        this.weight = weight;
+//        this.height = height;
+//        this.age = age;
+//    }
 
     public User() {}
 
@@ -35,6 +44,18 @@ public class User {
         return phone_number;
     }
 
+//    public String getWeight() {
+//        return weight;
+//    }
+//
+//    public String getHeight() {
+//        return height;
+//    }
+//
+//    public String getAge() {
+//        return age;
+//    }
+
     // setters
     public void setFull_name(String full_name) {
         this.full_name = full_name;
@@ -51,4 +72,16 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+//    public void setWeight(String weight) {
+//        this.weight = weight;
+//    }
+//
+//    public void setHeight(String height) {
+//        this.height = height;
+//    }
+//
+//    public void setAge(String age) {
+//        this.age = age;
+//    }
 }

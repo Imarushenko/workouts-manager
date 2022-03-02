@@ -48,7 +48,7 @@ public class CreateWorkout extends AppCompatActivity {
         String workoutDetails = ((EditText) findViewById(R.id.details_field_create_workout)).getText().toString();
         String sets = ((EditText) findViewById(R.id.sets_field_create_workout)).getText().toString();
 
-        // new User object
+        // new Workout object
         KindOfWorkouts createWorkout = new KindOfWorkouts(id, title, typeOfWorkout, workoutDetails, sets);
 
         // Write to the database
