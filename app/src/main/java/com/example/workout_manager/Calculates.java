@@ -10,14 +10,14 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Calculates extends AppCompatActivity {
     // properties
     // BMI
-    private EditText height;
-    private EditText weight;
-    private TextView result;
+    EditText height;
+    EditText weight;
+    TextView result;
     // BMR
-    private EditText age;
-    private EditText heightBMR;
-    private EditText weightBMR;
-    private TextView resultBMR;
+    EditText age;
+    EditText heightBMR;
+    EditText weightBMR;
+    TextView resultBMR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
