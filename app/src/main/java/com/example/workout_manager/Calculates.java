@@ -76,8 +76,6 @@ public class Calculates extends AppCompatActivity {
         // a function that runs after we clicked the button
         @Override
         protected void onPostExecute(String s) {
-            Toast.makeText(Calculates.this, "BMR calculated successfully!!", Toast.LENGTH_LONG).show();
-
             // what we gonna save in the database
             String weight_bmr = ((EditText) findViewById(R.id.weight_bmr_field)).getText().toString();
             String height_bmr = ((EditText) findViewById(R.id.height_bmr_field)).getText().toString();
@@ -107,8 +105,19 @@ public class Calculates extends AppCompatActivity {
                 float hValue = Float.parseFloat(hStr) / 100;
                 float wValue = Float.parseFloat(wStr);
 
-                float bmr = (float) (((ageValue * 5) - (hValue * 6.25) + (wValue * 10)) * 1.5);
-                resultBMR.setText((Float.toString(bmr)));
+                if(hValue == 0) {
+                    resultBMR.setText("Height cannot be 0");
+                }
+
+                else if(wValue == 0) {
+                    resultBMR.setText("Weight cannot be 0");
+                }
+
+                else {
+                    float bmr = (float) (((ageValue * 5) - (hValue * 6.25) + (wValue * 10)) * 1.5);
+                    resultBMR.setText((Float.toString(bmr)));
+//                    Toast.makeText(Calculates.this, "BMR calculated successfully!!", Toast.LENGTH_LONG).show();
+                }
             }
             catch (Exception e) {
                 System.out.println(e);
