@@ -82,9 +82,10 @@ public class Calculates extends AppCompatActivity {
             String weight_bmr = ((EditText) findViewById(R.id.weight_bmr_field)).getText().toString();
             String height_bmr = ((EditText) findViewById(R.id.height_bmr_field)).getText().toString();
             String age_bmr = ((EditText) findViewById(R.id.age_bmr_field)).getText().toString();
+            String bmr_result = ((TextView) findViewById(R.id.result_bmr)).getText().toString();
 
             // new UserDetails object
-            UserDetails_BMI_BMR user_details = new UserDetails_BMI_BMR(weight_bmr, height_bmr, age_bmr);
+            UserDetails_BMI_BMR user_details = new UserDetails_BMI_BMR(weight_bmr, height_bmr, age_bmr, bmr_result);
 
             // Write to the database
             FirebaseDatabase database = FirebaseDatabase.getInstance(); // manager - access the database
@@ -92,7 +93,6 @@ public class Calculates extends AppCompatActivity {
             DatabaseReference myRef = database.getReference("BMR Details").child(user_details.getAge());
 
             myRef.setValue(user_details);
-
         }
 
         // a function that runs in the background - calculate BMR
