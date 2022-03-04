@@ -34,4 +34,6 @@
     <string name="result_bmi">Result</string>
     <string name="calculate_bmr_btn">Calculate BMR</string>
     <string name="result_bmr">Result</string>
+    <string name="values_AFR">Calculate BMI</string>
+    <string name="calculate_bmi_values">Calculate BMI Values</string>
 </resources>

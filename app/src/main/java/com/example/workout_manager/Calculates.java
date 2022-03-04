@@ -1,5 +1,6 @@
 package com.example.workout_manager;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,7 +27,8 @@ public class Calculates extends AppCompatActivity {
     // BMI
     EditText height;
     EditText weight;
-    TextView result;
+    TextView bmi_result;
+    Button bmi_btn;
     // BMR
     EditText age;
     EditText heightBMR;
@@ -37,10 +44,25 @@ public class Calculates extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         // get fields by id from the activity
         // BMI
-        height = (EditText) findViewById(R.id.weight_field);
-        weight = (EditText) findViewById(R.id.height_field);
-        result = (TextView) findViewById(R.id.result_bmi);
-        // BMR
+        height = (EditText) findViewById(R.id.height_field);
+        weight = (EditText) findViewById(R.id.weight_field);
+        bmi_result = (TextView) findViewById(R.id.result_bmi);
+        bmi_btn = (Button) findViewById(R.id.BMI_btn);
+
+        bmi_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                float h = Integer.parseInt(height.getText().toString());
+                float w = Integer.parseInt(weight.getText().toString());
+                // intent - activity for result
+                Intent intent = new Intent(Calculates.this, ActivityForResult_BMI.class);
+                intent.putExtra("h", h);
+                intent.putExtra("w", w);
+                startForResult.launch(intent);
+            }
+        });
+
+        // BMR - get fields by id
         age = (EditText) findViewById(R.id.age_bmr_field);
         heightBMR = (EditText) findViewById(R.id.height_bmr_field);
         weightBMR = (EditText) findViewById(R.id.weight_bmr_field);
@@ -50,33 +72,23 @@ public class Calculates extends AppCompatActivity {
         BMR_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // execute AsyncTask class bellow
                 new CalculateBmiBmr().execute();
             }
         });
     }
 
-    public void calculateBMI(View v) {
-        String heightStr = height.getText().toString();
-        String weightStr = weight.getText().toString();
-
-            float heightValue = Float.parseFloat(heightStr) / 100;
-            float weightValue = Float.parseFloat(weightStr);
-
-            if(heightValue == 0) {
-                result.setText("Height cannot be 0");
+    // activityForResult method using activity for result launcher
+    ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+            if(result != null && result.getResultCode() == RESULT_OK) {
+                if(result.getData() != null && result.getData().getStringExtra(ActivityForResult_BMI.KEY_NAME) != null) {
+                    bmi_result.setText(result.getData().getStringExtra(ActivityForResult_BMI.KEY_NAME));
+                }
             }
-
-            else if(weightValue == 0 ) {
-                result.setText("Weight cannot be 0");
-            }
-
-            else {
-                float bmi = (weightValue / (heightValue * heightValue));
-                result.setText(Float.toString(bmi));
-                // popup
-                Toast.makeText(Calculates.this, "BMI calculated successfully!!", Toast.LENGTH_LONG).show();
-            }
-    }
+        }
+    });
 
     // inner class of AsyncTask
     public class CalculateBmiBmr extends AsyncTask<String, String, String> {
