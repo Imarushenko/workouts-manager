@@ -62,8 +62,21 @@ public class Calculates extends AppCompatActivity {
             float heightValue = Float.parseFloat(heightStr) / 100;
             float weightValue = Float.parseFloat(weightStr);
 
-            float bmi = (weightValue / (heightValue * heightValue) / 10);
-            result.setText(Float.toString(bmi));
+            if(heightValue == 0) {
+                result.setText("Height cannot be 0");
+            }
+
+            else if(weightValue == 0 ) {
+                result.setText("Weight cannot be 0");
+            }
+
+            else {
+                float bmi = (weightValue / (heightValue * heightValue));
+                result.setText(Float.toString(bmi));
+                // popup
+                Toast.makeText(Calculates.this, "BMI calculated successfully!!", Toast.LENGTH_LONG).show();
+            }
+
 
     }
 
@@ -73,32 +86,34 @@ public class Calculates extends AppCompatActivity {
         protected void onPreExecute() {
         }
 
-        // a function that runs after we clicked the button
+        // a function that runs after we clicked the button (post execute)
         @Override
         protected void onPostExecute(String s) {
-            // what we gonna save in the database
-            String weight_bmr = ((EditText) findViewById(R.id.weight_bmr_field)).getText().toString();
-            String height_bmr = ((EditText) findViewById(R.id.height_bmr_field)).getText().toString();
-            String age_bmr = ((EditText) findViewById(R.id.age_bmr_field)).getText().toString();
-            String bmr_result = ((TextView) findViewById(R.id.result_bmr)).getText().toString();
 
-            // new UserDetails object
-            UserDetails_BMI_BMR user_details = new UserDetails_BMI_BMR(weight_bmr, height_bmr, age_bmr, bmr_result);
-
-            // Write to the database
-            FirebaseDatabase database = FirebaseDatabase.getInstance(); // manager - access the database
-            // location where to add the data - if the location isn't exists - it will be created by the "path"
-            DatabaseReference myRef = database.getReference("BMR Details").child(user_details.getAge());
-
-            myRef.setValue(user_details);
-
-            if(isValid) {
+            if(isValidBmr) {
+                // popup
                 Toast.makeText(Calculates.this, "BMR calculated successfully!!", Toast.LENGTH_LONG).show();
+
+                // what we gonna save in the database
+                String weight_bmr = ((EditText) findViewById(R.id.weight_bmr_field)).getText().toString();
+                String height_bmr = ((EditText) findViewById(R.id.height_bmr_field)).getText().toString();
+                String age_bmr = ((EditText) findViewById(R.id.age_bmr_field)).getText().toString();
+                String bmr_result = ((TextView) findViewById(R.id.result_bmr)).getText().toString();
+
+                // new UserDetails object
+                UserDetails_BMI_BMR user_details = new UserDetails_BMI_BMR(weight_bmr, height_bmr, age_bmr, bmr_result);
+
+                // Write to the database
+                FirebaseDatabase database = FirebaseDatabase.getInstance(); // manager - access the database
+                // location where to add the data - if the location isn't exists - it will be created by the "path"
+                DatabaseReference myRef = database.getReference("BMR Details").child(user_details.getAge());
+
+                myRef.setValue(user_details);
             }
         }
 
-        // boolean property to check if the BMR parameters are valid to show the popup afterwards
-        boolean isValid = false;
+        // helper boolean property to check if the BMR parameters are valid. if it is valid: add it to the database & show the popup
+        boolean isValidBmr = false;
 
         // a function that runs in the background - calculate BMR
         @Override
@@ -127,7 +142,7 @@ public class Calculates extends AppCompatActivity {
                 else {
                     float bmr = (float) (((ageValue * 5) - (hValue * 6.25) + (wValue * 10)) * 1.5);
                     resultBMR.setText((Float.toString(bmr)));
-                    isValid = true;
+                    isValidBmr = true;
                 }
             }
             catch (Exception e) {
