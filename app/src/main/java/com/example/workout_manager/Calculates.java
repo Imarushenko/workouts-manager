@@ -91,7 +91,14 @@ public class Calculates extends AppCompatActivity {
             DatabaseReference myRef = database.getReference("BMR Details").child(user_details.getAge());
 
             myRef.setValue(user_details);
+
+            if(isValid) {
+                Toast.makeText(Calculates.this, "BMR calculated successfully!!", Toast.LENGTH_LONG).show();
+            }
         }
+
+        // boolean property to check if the BMR parameters are valid to show the popup afterwards
+        boolean isValid = false;
 
         // a function that runs in the background - calculate BMR
         @Override
@@ -109,6 +116,10 @@ public class Calculates extends AppCompatActivity {
                     resultBMR.setText("Height cannot be 0");
                 }
 
+                if(ageValue < 0 || ageValue > 120) {
+                    resultBMR.setText("Please enter a valid age");
+                }
+
                 else if(wValue == 0) {
                     resultBMR.setText("Weight cannot be 0");
                 }
@@ -116,7 +127,7 @@ public class Calculates extends AppCompatActivity {
                 else {
                     float bmr = (float) (((ageValue * 5) - (hValue * 6.25) + (wValue * 10)) * 1.5);
                     resultBMR.setText((Float.toString(bmr)));
-//                    Toast.makeText(Calculates.this, "BMR calculated successfully!!", Toast.LENGTH_LONG).show();
+                    isValid = true;
                 }
             }
             catch (Exception e) {
