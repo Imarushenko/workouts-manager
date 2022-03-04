@@ -76,8 +76,6 @@ public class Calculates extends AppCompatActivity {
                 // popup
                 Toast.makeText(Calculates.this, "BMI calculated successfully!!", Toast.LENGTH_LONG).show();
             }
-
-
     }
 
     // inner class of AsyncTask
