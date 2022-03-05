@@ -32,7 +32,7 @@ public class AppRegister extends AppCompatActivity {
         // firebase
         mAuth = FirebaseAuth.getInstance();
 
-        // call 2 (or more) functions once click on 1 button
+        // onClick function
         Button reg_btn = findViewById(R.id.submit_btn_reg);
         reg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +45,7 @@ public class AppRegister extends AppCompatActivity {
         });
     }
 
-    // register function = Firebase
+    // register function - Firebase
     public void register() {
         // email & password - take from the activity
         String email = ((EditText) findViewById(R.id.email_field_reg)).getText().toString();
@@ -83,7 +83,7 @@ public class AppRegister extends AppCompatActivity {
         myRef.setValue(user);
     }
 
-    // go back to login screen (Activity) function
+    // go back to login screen (Activity) INTENT
     public void pointToLogin(View view) {
         Intent point_to_login_screen = new Intent(this, MainActivity.class);
         startActivity(point_to_login_screen);

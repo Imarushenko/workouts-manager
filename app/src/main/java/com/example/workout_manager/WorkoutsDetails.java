@@ -2,7 +2,8 @@ package com.example.workout_manager;
 
 import android.telephony.SignalStrength;
 
-public class KindOfWorkouts {
+// workouts details class
+public class WorkoutsDetails {
     // properties
     private String id;
     private String title;
@@ -13,7 +14,7 @@ public class KindOfWorkouts {
 
     // constructors
 
-    public KindOfWorkouts(String id, String title, String typeofWorkout, String workout_details, String sets) {
+    public WorkoutsDetails(String id, String title, String typeofWorkout, String workout_details, String sets) {
         this.id = id;
         this.title = title;
         this.typeofWorkout = typeofWorkout;
@@ -22,7 +23,7 @@ public class KindOfWorkouts {
 //        this.example = example;
     }
 
-    public KindOfWorkouts() {}
+    public WorkoutsDetails() {}
 
     // getters & setters
     public String getId() {

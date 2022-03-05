@@ -13,10 +13,10 @@
             android:name=".ActivityForResult_BMI"
             android:exported="false"
             android:label="Calculate BMI"
-            android:parentActivityName=".Calculates"
+            android:parentActivityName=".AsyncTask_Calculates"
             />
         <activity
-            android:name=".Calculates"
+            android:name=".AsyncTask_Calculates"
             android:exported="false"
             android:label="Calculate BMI / BMR"
             android:parentActivityName=".Workouts" />

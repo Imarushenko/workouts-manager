@@ -9,11 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class CreateWorkout extends AppCompatActivity {
     // firebase
@@ -49,7 +46,7 @@ public class CreateWorkout extends AppCompatActivity {
         String sets = ((EditText) findViewById(R.id.sets_field_create_workout)).getText().toString();
 
         // new Workout object
-        KindOfWorkouts createWorkout = new KindOfWorkouts(id, title, typeOfWorkout, workoutDetails, sets);
+        WorkoutsDetails createWorkout = new WorkoutsDetails(id, title, typeOfWorkout, workoutDetails, sets);
 
         // Write to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance(); // manager - access the database
@@ -61,7 +58,7 @@ public class CreateWorkout extends AppCompatActivity {
 
     // popup
     public void workOutAdded() {
-        Toast popUp = Toast.makeText(this, "Workout Was Added Successfully!", Toast.LENGTH_LONG);
+        Toast popUp = Toast.makeText(this, "Workout Was Created Successfully!", Toast.LENGTH_LONG);
         popUp.show();
     }
 }

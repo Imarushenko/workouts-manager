@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EDCACA"
-    tools:context=".Calculates">
+    tools:context=".AsyncTask_Calculates">
 
     <TextView
         android:id="@+id/title_bmi_bmr_main"

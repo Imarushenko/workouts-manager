@@ -1,5 +1,6 @@
 package com.example.workout_manager;
 
+// BMI / BMR class
 public class UserDetails_BMI_BMR {
     // properties
     private String weight;

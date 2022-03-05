@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         // firebase
         mAuth = FirebaseAuth.getInstance();
 
-        // call 2 (or more) functions once click on 1 button
+        // onClick function
         Button login_btn = findViewById(R.id.login_btn);
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             pointToLogin();
 
@@ -60,14 +58,14 @@ public class MainActivity extends AppCompatActivity {
 
                         } else {
                             // If sign in fails, display a message to the user.
-                            checkValidation();
+                            checkSignInValidation();
                         }
                     }
                 });
     }
 
     // popup - points to if user's details is wrong
-    public void checkValidation() {
+    public void checkSignInValidation() {
         Toast popUp = Toast.makeText(this, "Email or Password is wrong", Toast.LENGTH_LONG);
         popUp.show();
     }

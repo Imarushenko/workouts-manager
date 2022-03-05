@@ -9,8 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 // main class
@@ -18,10 +16,10 @@ public class AdapterForRecycleView extends RecyclerView.Adapter<AdapterForRecycl
 
     // properties
     Context context;
-    ArrayList<KindOfWorkouts> list;
+    ArrayList<WorkoutsDetails> list;
 
     // constructor
-    public AdapterForRecycleView(Context context, ArrayList<KindOfWorkouts> list) {
+    public AdapterForRecycleView(Context context, ArrayList<WorkoutsDetails> list) {
         this.context = context;
         this.list = list;
     }
@@ -37,11 +35,12 @@ public class AdapterForRecycleView extends RecyclerView.Adapter<AdapterForRecycl
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        KindOfWorkouts kindOfWorkouts = list.get(position);
-        holder.workoutTitle.setText(kindOfWorkouts.getTitle());
-        holder.typeOfWorkout.setText(kindOfWorkouts.getTypeofWorkout());
-        holder.workoutDetails.setText(kindOfWorkouts.getWorkout_details());
-        holder.numOfSetsOrDuration.setText(kindOfWorkouts.getSets());
+        // add data to the view holder
+        WorkoutsDetails workoutsDetails = list.get(position);
+        holder.workoutTitle.setText(workoutsDetails.getTitle());
+        holder.typeOfWorkout.setText(workoutsDetails.getTypeofWorkout());
+        holder.workoutDetails.setText(workoutsDetails.getWorkout_details());
+        holder.numOfSetsOrDuration.setText(workoutsDetails.getSets());
     }
 
     @Override
@@ -56,7 +55,7 @@ public class AdapterForRecycleView extends RecyclerView.Adapter<AdapterForRecycl
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            // set the data from the ITEM layout
             workoutTitle = itemView.findViewById(R.id.item_workout_title_card);
             typeOfWorkout = itemView.findViewById(R.id.item_type_of_workout_card);
             workoutDetails = itemView.findViewById(R.id.item_workout_details_card);

@@ -13,14 +13,13 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Calculates extends AppCompatActivity {
+public class AsyncTask_Calculates extends AppCompatActivity {
     // firebase
     private FirebaseAuth mAuth;
     // properties
@@ -54,8 +53,8 @@ public class Calculates extends AppCompatActivity {
             public void onClick(View v) {
                 float h = Integer.parseInt(height.getText().toString());
                 float w = Integer.parseInt(weight.getText().toString());
-                // intent - activity for result
-                Intent intent = new Intent(Calculates.this, ActivityForResult_BMI.class);
+                // INTENT - activity for result
+                Intent intent = new Intent(AsyncTask_Calculates.this, ActivityForResult_BMI.class);
                 intent.putExtra("h", h);
                 intent.putExtra("w", w);
                 startForResult.launch(intent);
@@ -102,7 +101,7 @@ public class Calculates extends AppCompatActivity {
 
             if(isValidBmr) {
                 // popup
-                Toast.makeText(Calculates.this, "BMR calculated successfully!!", Toast.LENGTH_LONG).show();
+                Toast.makeText(AsyncTask_Calculates.this, "BMR calculated successfully!!", Toast.LENGTH_LONG).show();
 
                 // what we gonna save in the database
                 String weight_bmr = ((EditText) findViewById(R.id.weight_bmr_field)).getText().toString();
@@ -129,14 +128,17 @@ public class Calculates extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             try {
+                // stringify the values
                 String ageStr = age.getText().toString();
                 String hStr = heightBMR.getText().toString();
                 String wStr = weightBMR.getText().toString();
 
+                // parse string values to float
                 float ageValue = Float.parseFloat(ageStr);
                 float hValue = Float.parseFloat(hStr) / 100;
                 float wValue = Float.parseFloat(wStr);
 
+                // BMI validations
                 if(hValue == 0) {
                     resultBMR.setText("Height cannot be 0");
                 }
@@ -149,6 +151,7 @@ public class Calculates extends AppCompatActivity {
                     resultBMR.setText("Weight cannot be 0");
                 }
 
+                // BMI calculations
                 else {
                     float bmr = (float) (((ageValue * 5) - (hValue * 6.25) + (wValue * 10)) * 1.5);
                     resultBMR.setText((Float.toString(bmr)));
