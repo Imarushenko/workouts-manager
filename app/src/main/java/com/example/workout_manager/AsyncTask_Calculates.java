@@ -110,7 +110,7 @@ public class AsyncTask_Calculates extends AppCompatActivity {
                 String bmr_result = ((TextView) findViewById(R.id.result_bmr)).getText().toString();
 
                 // new UserDetails object
-                UserDetails_BMI_BMR user_details = new UserDetails_BMI_BMR(weight_bmr, height_bmr, age_bmr, bmr_result);
+                UserDetails_BMR user_details = new UserDetails_BMR(weight_bmr, height_bmr, age_bmr, bmr_result);
 
                 // Write to the database
                 FirebaseDatabase database = FirebaseDatabase.getInstance(); // manager - access the database

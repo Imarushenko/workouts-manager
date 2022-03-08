@@ -1,7 +1,7 @@
 package com.example.workout_manager;
 
-// BMI / BMR class
-public class UserDetails_BMI_BMR {
+// BMR class
+public class UserDetails_BMR {
     // properties
     private String weight;
     private String height;
@@ -9,14 +9,14 @@ public class UserDetails_BMI_BMR {
     private String BMR_result;
 
     // constructors
-    public UserDetails_BMI_BMR(String weight, String height, String age, String BMI_result) {
+    public UserDetails_BMR(String weight, String height, String age, String BMR_result) {
         this.weight = weight;
         this.height = height;
         this.age = age;
-        this.BMR_result = BMI_result;
+        this.BMR_result = BMR_result;
     }
 
-    public UserDetails_BMI_BMR() {
+    public UserDetails_BMR() {
     }
 
     // getters & setters
